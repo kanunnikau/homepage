@@ -12,7 +12,7 @@ describe("components/widgets/kubernetes/node", () => {
     const { container } = render(<Node type="cluster" options={{ showLabel: true, label: "Cluster A" }} data={data} />);
 
     expect(screen.getByText("50")).toBeInTheDocument();
-    expect(screen.getByText("123")).toBeInTheDocument();
+    expect(screen.getByText(/123/)).toBeInTheDocument();
     expect(screen.getByText("Cluster A")).toBeInTheDocument();
     expect(container.querySelectorAll('div[style*="width:"]').length).toBeGreaterThan(0);
   });

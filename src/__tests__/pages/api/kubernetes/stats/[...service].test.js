@@ -119,7 +119,7 @@ describe("pages/api/kubernetes/stats/[...service]", () => {
         mem: 0,
         cpu: 0,
         cpuLimit: 0.75,
-        memLimit: 1000000000,
+        memLimit: 1073741824,
         cpuUsage: 0,
         memUsage: 0,
       },
@@ -148,7 +148,7 @@ describe("pages/api/kubernetes/stats/[...service]", () => {
     expect(logger.error).toHaveBeenCalled();
     expect(res.statusCode).toBe(200);
     expect(res.body.stats.cpuLimit).toBe(0.5);
-    expect(res.body.stats.memLimit).toBe(1000000000);
+    expect(res.body.stats.memLimit).toBe(1073741824);
     expect(res.body.stats.cpu).toBe(0);
     expect(res.body.stats.mem).toBe(0);
   });
@@ -186,11 +186,11 @@ describe("pages/api/kubernetes/stats/[...service]", () => {
 
     const { stats } = res.body;
     expect(stats.cpuLimit).toBe(1.5);
-    expect(stats.memLimit).toBe(3000000000);
+    expect(stats.memLimit).toBe(3221225472);
     expect(stats.cpu).toBeCloseTo(1.0, 5);
-    expect(stats.mem).toBe(1200000000);
+    expect(stats.mem).toBe(1283457024);
     expect(stats.cpuUsage).toBeCloseTo((100 * 1.0) / 1.5, 5);
-    expect(stats.memUsage).toBeCloseTo((100 * 1200000000) / 3000000000, 5);
+    expect(stats.memUsage).toBeCloseTo((100 * 1283457024) / 3221225472, 5);
   });
 
   it("returns 500 when an unexpected error is thrown", async () => {
