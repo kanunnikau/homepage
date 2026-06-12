@@ -12,12 +12,12 @@ describe("utils/kubernetes/utils", () => {
   });
 
   it("parses memory units into numeric values", () => {
-    expect(parseMemory("1Gi")).toBe(1000000000);
-    expect(parseMemory("1G")).toBe(1024 * 1024 * 1024);
-    expect(parseMemory("1Mi")).toBe(1000000);
-    expect(parseMemory("1M")).toBe(1024 * 1024);
-    expect(parseMemory("1Ki")).toBe(1000);
-    expect(parseMemory("1K")).toBe(1024);
+    expect(parseMemory("1Gi")).toBe(1024 * 1024 * 1024);
+    expect(parseMemory("1G")).toBe(1000000000);
+    expect(parseMemory("1Mi")).toBe(1024 * 1024);
+    expect(parseMemory("1M")).toBe(1000000);
+    expect(parseMemory("1Ki")).toBe(1024);
+    expect(parseMemory("1K")).toBe(1000);
     expect(parseMemory("3Ti")).toBe(3);
     expect(parseMemory("256")).toBe(256);
   });
