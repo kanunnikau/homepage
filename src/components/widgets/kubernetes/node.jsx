@@ -38,11 +38,19 @@ export default function Node({ type, options, data }) {
             <UsageBar percent={data?.cpu?.percent ?? 0} />
             <div className="text-theme-800 dark:text-theme-200 text-xs flex flex-row justify-between">
               <div className="pl-0.5">
+                {t("common.number", {
+                  value: data?.memory?.percent ?? 0,
+                  style: "unit",
+                  unit: "percent",
+                  maximumFractionDigits: 0,
+                })}{" "}
+                (
                 {t("common.bytes", {
                   value: data?.memory?.free ?? 0,
                   maximumFractionDigits: 0,
                   binary: true,
-                })}
+                })}{" "}
+                free)
               </div>
               <FaMemory className="text-theme-800 dark:text-theme-200 w-3 h-3" />
             </div>
